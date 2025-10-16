@@ -46,6 +46,17 @@ The main objective of this project is to develop a digital information system fo
 </table>
 
 
+<h2>  User-Level Features </h2>
+<li> 
+  <ul>Landing Page: Presents TTMPC branding, mission, and entry points for login or registration.
+</ul>
+  <ul>Login/Sign-Up Page: Secure authentication for both admin and members.
+</ul>
+  </ul>
+  <ul>Member Registration Form: Allows new members to register online with required personal and cooperative-related details.
+
+</ul>
+</li>
 
 
 
