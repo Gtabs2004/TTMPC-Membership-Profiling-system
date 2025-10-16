@@ -15,5 +15,39 @@ This system replaces the traditional manual profiling method with a centralized 
 
 The main objective of this project is to develop a digital information system for the Tubungan Teachers Multi-Purpose Cooperative (TTMPC) that automates and streamlines the cooperative’s member application and profiling process.
 
+# Tech Stack (Programming Languages & Tools)
+
+<table>
+  <tr>
+    <th>Layer</th>
+    <th>Technology Used</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><strong>Frontend</strong></td>
+    <td>JavaScript, React.js</td>
+    <td>For building a dynamic, responsive, and interactive user interface.</td>
+  </tr>
+  <tr>
+    <td><strong>Backend</strong></td>
+    <td>PHP</td>
+    <td>Handles server-side logic and CRUD operations for member data.</td>
+  </tr>
+  <tr>
+    <td><strong>Database</strong></td>
+    <td>Firebase</td>
+    <td>Cloud-based database used to store and manage member information securely.</td>
+  </tr>
+  <tr>
+    <td><strong>Version Control</strong></td>
+    <td>Git & GitHub</td>
+    <td>For collaboration, version tracking, and source code management.</td>
+  </tr>
+</table>
+
+
+
+
+
 
 
