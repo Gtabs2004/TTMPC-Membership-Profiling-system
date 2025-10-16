@@ -88,6 +88,49 @@ The main objective of this project is to develop a digital information system fo
 </ul>
 </li> 
 
+
+# How It Works
+
+<li> 
+  <ul>Landing Page:
+ Users are greeted with the TTMPC homepage where they can log in or register.
+</ul>
+</li> 
+
+<li> 
+  <ul>Member Registration:
+ New members fill out the online registration form and submit required information.
+</ul>
+</li> 
+
+<li> 
+  <ul>Admin Verification:
+ Admin reviews the submitted application, conducts background checks, and decides whether to approve or reject the registration.
+
+</ul>
+</li> 
+
+<li> 
+  <ul>Dashboard Access:
+ Once logged in, the admin dashboard displays an overview of total members, new applications, and past members.
+</ul>
+</li> 
+
+<li> 
+  <ul>Member Management:
+ Admin can add new members, update profiles, view details, or remove inactive ones using CRUD operations.
+
+</ul>
+</li> 
+
+<li> 
+  <ul>Data Storage:
+ All information is stored securely in Firebase, ensuring data integrity and real-time synchronization.
+
+</ul>
+</li> 
+
+
 </html>
 
 
