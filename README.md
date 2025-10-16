@@ -3,7 +3,7 @@
 
 <html>
   <img width="2048" height="1066" alt="552884266_1497010184951328_7265860816299311570_n" src="https://github.com/user-attachments/assets/6f3c2516-25c9-407e-b0bf-173acda46a40" />
-</html>
+
 
 # System Description and Purpose
 
@@ -61,6 +61,36 @@ The main objective of this project is to develop a digital information system fo
   <ul>Member Registration Form: Allows new members to register online with required personal and cooperative-related details.
 </ul>
 </li> 
+
+<h2>  Admin-Level Features </h2>
+<li> 
+  <ul>Dashboard: Displays cooperative statistics such as total members, pending applications, and past members.
+</ul>
+</li> 
+
+<li> 
+  <ul>Member Management (CRUD): Admins can Create, Read, Update, and Delete member profiles.
+</ul>
+</li> 
+
+<li> 
+  <ul>Add Existing Members: For integrating old records into the digital system.
+</ul>
+</li> 
+
+<li> 
+  <ul>Application Review Panel: Admin can background check, accept, or reject pending member applications.
+</ul>
+</li> 
+
+<li> 
+  <ul>Search and Filter: Easily locate members using name, ID, or membership status.
+</ul>
+</li> 
+
+</html>
+
+
 
 
 
