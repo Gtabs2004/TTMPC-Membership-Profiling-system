@@ -130,6 +130,38 @@ The main objective of this project is to develop a digital information system fo
 </ul>
 </li> 
 
+# Developers Team
+
+<table>
+  <tr> 
+    <th>Name</th>
+    <th>Position</th>
+    <th>Email</th>
+  </tr>
+
+  <tr> 
+    <td>Gero Antoni Tabiolo</td>
+    <td>Backend Developer</td>
+    <td>geroantoni.tabiolo@wvsu.edu.ph</td>
+  </tr>
+
+  <tr> 
+    <td>Leanne Joy Libertad</td>
+    <td>Front-End Developer</td>
+    <td>leannejoy.libertad@wvsu.edu.ph</td>
+  </tr>
+
+   <tr> 
+    <td>Lorraine Angel Castor</td>
+    <td>Front-End Developer</td>
+    <td>lorraineangel.castor@wvsu.edu.ph</td> 
+
+  </tr>
+  
+</table>
+
+
+  <img width="2048" height="1066" alt="552884266_1497010184951328_72658608162ds99311570_n" src="https://github.com/user-attachments/assets/d8dc0335-111d-4884-9388-8c7476d93cfe" />
 
 </html>
 
