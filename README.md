@@ -25,7 +25,7 @@ The main objective of this project is to develop a digital information system fo
   </tr>
   <tr>
     <td><strong>Frontend</strong></td>
-    <td>JavaScript, React.js</td>
+    <td>JavaScript, React.js, html, css</td>
     <td>For building a dynamic, responsive, and interactive user interface.</td>
   </tr>
   <tr>
