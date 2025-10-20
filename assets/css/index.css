@@ -12,7 +12,7 @@ body {
   background-attachment: fixed;
 }
 
-/* NAVBAR */
+
 .navbar {
   position: fixed;
   top: 0;
@@ -44,7 +44,7 @@ body {
   font-weight: bold;
 }
 
-/* NAV LINKS */
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -66,7 +66,7 @@ body {
   color: #ffd700;
 }
 
-/* LOGIN BUTTON */
+
 .navbar button {
   background-color: white;
   border: none;
@@ -86,7 +86,7 @@ body {
   font-size: 15px;
 }
 
-/* HERO SECTION */
+
 .hero-section {
   min-height: 100vh;
 }
@@ -98,7 +98,7 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-left: 60px;
-  padding-top: 180px; /* adjusted for fixed navbar */
+  padding-top: 180px; 
 }
 
 .hero-section .section-content .hero-left .title {
