@@ -1,0 +1,20 @@
+*{
+    margin: 0px; 
+    padding: 0px; 
+    box-sizing: border-box;
+    
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(88, 90, 88, 0.95);
+}
+.header-Contents {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
