@@ -75,7 +75,7 @@ document.querySelectorAll('.team-card').forEach(card => {
     email: "lorraine.castor@ttmpc.com",
     expertise: "HTML, CSS, JavaScript, firebase,Sql, UI Design",
     bio: "Lorraine is a front-end developer who specializes in building responsive, visually appealing, and user-friendly interfaces. She focuses on delivering seamless user experiences through clean and efficient code.",
-    photo:"./IMAGES/568190127_1152421640435415_909970235555190483_n.png"
+    photo:"assets/img/LORRAINE.png"
   },
   dev2: {
     name: "Gero Antoni Tabiolo",
@@ -83,7 +83,7 @@ document.querySelectorAll('.team-card').forEach(card => {
     email: "gero.tabiolo@ttmpc.com",
     expertise: "Python, firebase,Php, Javascript, HTML,CSS",
     bio: "Gero specializes in building robust server-side applications and APIs with a strong focus on performance, scalability, and security.",
-    photo: "./IMAGES/565048293_3045032615699930_1828895615437403821_n-removebg-preview.png"
+    photo: "assets/img/gero.png"
   },
   dev3: {
     name: "Leanne Joy Libardad",
@@ -91,7 +91,7 @@ document.querySelectorAll('.team-card').forEach(card => {
     email: "leanne.libertad@ttmpc.com",
     expertise:  "Figma,HTML,CSS,Javascript, firebase, Prototyping",
     bio: "Leanne is a creative UI/UX designer who turns ideas into intuitive and visually appealing digital experiences.",
-    photo:"./IMAGES/Screenshot_2025-10-21_133443-removebg-preview.png"
+    photo:"assets/img/LEANNE.png"
   }
 };
 
