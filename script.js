@@ -41,3 +41,56 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.team-card').forEach(card => {
     observer.observe(card);
 });
+
+
+ const developers = {
+  dev1: {
+    name: "Lorraine Angel Castor",
+    role: "Front-End Developer",
+    email: "lorraine.castor@ttmpc.com",
+    expertise: "HTML, CSS, JavaScript, firebase,Sql, UI Design",
+    bio: "Lorraine is a front-end developer who specializes in building responsive, visually appealing, and user-friendly interfaces. She focuses on delivering seamless user experiences through clean and efficient code.",
+    photo:"./IMAGES/568190127_1152421640435415_909970235555190483_n.png"
+  },
+  dev2: {
+    name: "Gero Antoni Tabiolo",
+    role: "Backend Developer",
+    email: "gero.tabiolo@ttmpc.com",
+    expertise: "Python, firebase,Php, Javascript, HTML,CSS",
+    bio: "Gero specializes in building robust server-side applications and APIs with a strong focus on performance, scalability, and security.",
+    photo: "./IMAGES/565048293_3045032615699930_1828895615437403821_n-removebg-preview.png"
+  },
+  dev3: {
+    name: "Leanne Joy Libardad",
+    role: "UI/UX Designer",
+    email: "leanne.libertad@ttmpc.com",
+    expertise:  "Figma,HTML,CSS,Javascript, firebase, Prototyping",
+    bio: "Leanne is a creative UI/UX designer who turns ideas into intuitive and visually appealing digital experiences.",
+    photo:"./IMAGES/Screenshot_2025-10-21_133443-removebg-preview.png"
+  }
+};
+
+    function openModal(devId) {
+      const dev = developers[devId];
+      document.getElementById('modalName').textContent = dev.name;
+      document.getElementById('modalRole').textContent = dev.role;
+      document.getElementById('modalEmail').textContent = dev.email;
+      document.getElementById('modalExpertise').textContent = dev.expertise;
+      document.getElementById('modalBio').textContent = dev.bio;
+      document.getElementById('modalPhoto').src = dev.photo;
+      document.getElementById('modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function closeModalOnBackdrop(event) {
+      if (event.target.id === 'modal') closeModal();
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
