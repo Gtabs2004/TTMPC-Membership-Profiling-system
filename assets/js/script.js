@@ -91,7 +91,7 @@ document.querySelectorAll('.team-card').forEach(card => {
     email: "leanne.libertad@ttmpc.com",
     expertise:  "Figma,HTML,CSS,Javascript, firebase, Prototyping",
     bio: "Leanne is a front-end developer with a strong foundation in design and user experience. She specializes in creating visually engaging, responsive, and accessible web interfaces that bring creativity and functionality together seamlessly.",
-    photo:"assets/img/LEANNE.png"
+    photo:"assets/img/leanne_updated_pic.png"
   }
 };
 
