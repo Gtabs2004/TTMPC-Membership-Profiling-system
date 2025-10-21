@@ -277,3 +277,209 @@ body {
 .sub-card:nth-child(2) {
   flex-direction: row;
 }
+
+
+.dev-team-section {
+      padding: 60px 80px;
+      background-color: #fafafa;
+      min-height: 100vh;
+    }
+
+    .dev-team-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .dev-team-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .dev-team-header p {
+      font-size: 1rem;
+      color: #999;
+    }
+
+    .dev-team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .dev-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .dev-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .dev-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .dev-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: filter 0.3s ease;
+    }
+
+    .dev-card:hover .dev-photo img {
+      filter: brightness(1.05);
+    }
+
+    .dev-info {
+      padding: 25px;
+      text-align: center;
+    }
+
+    .dev-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .dev-role {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* ===== MODAL OVERLAY ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(50, 50, 50, 0.5); /* transparent gray overlay */
+      backdrop-filter: blur(6px);
+      justify-content: flex-start;
+      align-items: stretch;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    /* ===== SIDE MODAL CONTENT ===== */
+    .modal-content {
+      display: flex;
+      width: 70%;
+      max-width: 1100px;
+      height: 100%;
+      animation: slideInLeft 0.4s ease;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* ===== LEFT SIDE (PHOTO) ===== */
+    .modal-left {
+      background-color: #b0b0b0; /* gray background */
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .modal-left img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* full-fit photo */
+    }
+
+    /* ===== RIGHT SIDE (INFO) ===== */
+    .modal-right {
+      flex: 1.2;
+      background-color: rgba(15, 15, 15, 0.95); /* half-black */
+      color: #fff;
+      padding: 60px 50px;
+      position: relative;
+      overflow-y: auto;
+    }
+
+    /* ===== CLOSE BUTTON ===== */
+    .modal-close {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      font-size: 2rem;
+      color: #bbb;
+      cursor: pointer;
+      transition: color 0.3s;
+      z-index: 10;
+    }
+
+    .modal-close:hover {
+      color: #fff;
+    }
+
+    /* ===== TEXT ===== */
+    .modal-person-name {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+
+    .modal-person-role {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .modal-section {
+      margin-bottom: 30px;
+    }
+
+    .modal-section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .modal-section-text {
+      font-size: 1rem;
+      color: #ddd;
+      line-height: 1.7;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+      .modal-content {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .modal-left {
+        height: 45%;
+      }
+
+      .modal-right {
+        height: 55%;
+      }
+    }
