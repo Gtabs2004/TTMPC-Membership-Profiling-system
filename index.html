@@ -110,7 +110,7 @@
     <div class="dev-team-grid">
       <div class="dev-card" onclick="openModal('dev1')">
         <div class="dev-photo">
-          <img src="./images/LORRAINE.png" alt="Lorraine Angel Castor">
+          <img src="assets/img/LORRAINE.png" alt="Lorraine Angel Castor">
         </div>
         <div class="dev-info">
           <div class="dev-name">Lorraine Angel Castor</div>
@@ -120,7 +120,7 @@
 
       <div class="dev-card" onclick="openModal('dev2')">
         <div class="dev-photo">
-          <img src="./images/gero.png" alt="Gero Antoni Tabiolo">
+          <img src="assets/img/gero.png" alt="Gero Antoni Tabiolo">
         </div>
         <div class="dev-info">
           <div class="dev-name">Gero Antoni Tabiolo</div>
@@ -130,7 +130,7 @@
 
       <div class="dev-card" onclick="openModal('dev3')">
         <div class="dev-photo">
-          <img src="./images/LEANNE.png" alt="Leanne Joy Libertad">
+          <img src="assets/img/LEANNE.png" alt="Leanne Joy Libertad">
         </div>
         <div class="dev-info">
           <div class="dev-name">Leanne Joy Libertad</div>
@@ -140,6 +140,33 @@
     </div>
   </section>
 
+  <!-- SIDE MODAL -->
+  <div id="modal" class="modal" onclick="closeModalOnBackdrop(event)">
+    <div class="modal-content">
+      <div class="modal-left">
+        <img id="modalPhoto" src="" alt="Developer Photo">
+      </div>
+
+      <div class="modal-right">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <div class="modal-person-name" id="modalName"></div>
+        <div class="modal-person-role" id="modalRole"></div>
+
+        <div class="modal-section">
+          <div class="modal-section-title">About</div>
+          <div class="modal-section-text" id="modalBio"></div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">Expertise</div>
+          <div class="modal-section-text" id="modalExpertise"></div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">Contact</div>
+          <div class="modal-section-text" id="modalEmail"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
     </main>
   </body>
