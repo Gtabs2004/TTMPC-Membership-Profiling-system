@@ -87,7 +87,7 @@ document.querySelectorAll('.team-card').forEach(card => {
   },
   dev3: {
     name: "Leanne Joy Libardad",
-    role: "UI/UX Designer",
+    role: "Front-End Developer",
     email: "leanne.libertad@ttmpc.com",
     expertise:  "Figma,HTML,CSS,Javascript, firebase, Prototyping",
     bio: "Leanne is a creative UI/UX designer who turns ideas into intuitive and visually appealing digital experiences.",
