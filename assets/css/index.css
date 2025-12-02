@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   text-decoration: none;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   box-sizing: border-box;
 }
 
@@ -48,7 +48,7 @@ body {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 150px;
 }
 
 .nav-links li {
@@ -57,7 +57,7 @@ body {
 
 .nav-links a {
   color: white;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   transition: color 0.3s ease;
 }
