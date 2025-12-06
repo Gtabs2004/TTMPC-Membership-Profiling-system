@@ -1,0 +1,70 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTMPC Create Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel=" stylesheet" type="text/css" href="assets/css/createAccount.css"/>
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="logo-section">
+            <div class="logo-container">
+                <img src="assets/img/about2.png" alt="TTMPC Logo" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            </div>
+            <div class="organization-name">
+                <h1>TUBUNGAN TEACHERS'</h1>
+                <p>MULTI-PURPOSE COOPERATIVE</p>
+            </div>
+        </div>
+
+        <div class="login-section">
+            <div class="login-header">
+                <h2>TTMPC LOGIN</h2>
+                <p>Welcome back! Please sign in to your account</p>
+            </div>
+
+            <div id="alertContainer"></div>
+
+            <form id="loginForm">
+                <div class="Name_credentials">  
+                <div class="form-group">
+                    <label for="First_Name">First Name</label>
+                    <input type="text" id="First_Name"placeholder="First Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="Last_Name">Last Name</label>
+                    <input type="text" id="Last_Name"placeholder="Last Name">
+                </div>
+            
+            </div>
+    
+            <div class="Password_Creation">
+                    <div class="form-group">
+                        <label for="create_password">Create Password</label>
+                            <div class="input-wrapper">
+                                 <input type="create_password" id="create_password" placeholder="Create password" required>
+                                 <i class="fas fa-eye password-toggle" id="togglePassword"></i>
+                       </div>
+
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password</label>
+                            <div class="input-wrapper">
+                                 <input type="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+                                 <i class="fas fa-eye password-toggle" id="togglePassword"></i>
+                       </div>
+            </div>
+                    
+                <div class="button-group">
+
+                    <a class="btn-btn-back" href="index.html">Back</a>
+                    <button type="button" class="btn btn-login" onclick="login()">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -138,6 +138,11 @@
             font-size: 1rem;
         }
 
+        .Name_credentials{
+            display: flex;
+            gap: 5px;
+        }
+
         .form-group {
             margin-bottom: 1.5rem;
             position: relative;
