@@ -44,11 +44,18 @@ body {
   font-weight: bold;
 }
 
-
+.nav-bar {
+  display: flex; 
+  align-items: center;
+  gap: 20px; 
+  justify-content: flex-end; 
+}
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 150px;
+  gap: 18px; 
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links li {
@@ -58,7 +65,6 @@ body {
 .nav-links a {
   color: white;
   font-size: 20px;
-  font-weight: bold;
   transition: color 0.3s ease;
 }
 
@@ -483,3 +489,16 @@ body {
         height: 55%;
       }
     }
+
+/* ===== FOOTER ===== */
+.footer-container {
+  background-color: rgba(128, 128, 128, 0.711);
+  padding: 40px 80px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.footer-text {
+  color: white;
+  font-size: 14px;
+}
