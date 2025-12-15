@@ -147,3 +147,152 @@ textarea {
 .submit-btn:hover {
   background-color: #aaa;
 }
+
+
+
+
+
+
+
+
+CSS
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f3f8f3;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 260px;
+    background: #d4e8d4;
+    height: 100vh;
+    padding: 25px;
+}
+
+.logo {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.menu-section {
+    font-size: 14px;
+    margin-top: 20px;
+    color: #4b4b4b;
+    font-weight: bold;
+}
+
+.menu {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.menu li {
+    padding: 12px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.menu li.active,
+.menu li:hover {
+    background: #4c9f58;
+    color: white;
+}
+
+.admin-box {
+    position: absolute;
+    bottom: 20px;
+    left: 25px;
+    background: #fff;
+    padding: 15px;
+    width: 210px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.main {
+    width: 100%;
+    padding: 30px;
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date-box {
+    background: #4c9f58;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+}
+
+.cards {
+    display: flex;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.card {
+    flex: 1;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #e2e2e2;
+}
+
+.card h3 {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.card p {
+    font-size: 18px;
+}
+
+.table-section {
+    margin-top: 30px;
+}
+
+.table-title {
+    background: #4c9f58;
+    color: white;
+    padding: 12px;
+    border-radius: 10px 10px 0 0;
+    font-size: 18px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.empty {
+    text-align: center;
+    padding: 20px;
+    color: gray;
+}
+
+.active-status {
+    padding: 5px 12px;
+    background: #4c9f58;
+    color: white;
+    border-radius: 20px;
+}
