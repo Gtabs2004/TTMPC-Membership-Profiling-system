@@ -1,0 +1,292 @@
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTMPC Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <aside class="sidebar">
+        <h2 class="logo">TTMPC</h2>
+
+        <div class="menu-section">MAIN</div>
+        <ul class="menu">
+            <li class="active">Overview</li>
+        </ul>
+
+        <div class="menu-section">MEMBERS</div>
+        <ul class="menu">
+            <li>Membership Application</li>
+            <li>Manage Members</li>
+        </ul>
+
+        <div class="menu-section">FINANCIAL</div>
+        <ul class="menu">
+            <li>Finances</li>
+            <li>Savings</li>
+        </ul>
+
+        <div class="admin-box">
+            <strong>TTMPC Admin</strong>
+            <p>Administrator</p>
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <div class="top-row">
+            <h2>Username | Admin</h2>
+            <div id="datetime" class="date-box"></div>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <h3>3</h3>
+                <p>Total Members</p>
+            </div>
+
+            <div class="card">
+                <h3>0</h3>
+                <p>Staff Members</p>
+            </div>
+
+            <div class="card">
+                <h3>3</h3>
+                <p>Active Members</p>
+            </div>
+        </div>
+
+        <section class="table-section">
+            <div class="table-title">Staff Members</div>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Department</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td colspan="4" class="empty">No staff members found</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="table-section">
+            <div class="table-title">Recent Members</div>
+            <table>
+                <tr>
+                    <th>Member ID</th>
+                    <th>Name</th>
+                    <th>Join Date</th>
+                    <th>Status</th>
+                    <th>MIGS Status</th>
+                </tr>
+
+                <tr>
+                    <td>TTMPC2025244</td>
+                    <td>Leane Joy Libertad</td>
+                    <td>2025-12-02</td>
+                    <td><span class="active-status">Active</span></td>
+                    <td>N/A</td>
+                </tr>
+
+                <tr>
+                    <td>TTMPC2025605</td>
+                    <td>Gero Tabiolo</td>
+                    <td>2025-12-02</td>
+                    <td><span class="active-status">Active</span></td>
+                    <td>N/A</td>
+                </tr>
+
+                <tr>
+                    <td>TTMPC205022</td>
+                    <td>Lorraine Angel Castor</td>
+                    <td>2025-10-14</td>
+                    <td><span class="active-status">Active</span></td>
+                    <td>N/A</td>
+                </tr>
+
+            </table>
+        </section>
+
+    </main>
+</div>
+
+<script>
+    function updateDateTime() {
+        const dateBox = document.getElementById('datetime');
+        const now = new Date();
+
+        const options = { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long',
+            day: 'numeric'
+        };
+
+        let formattedDate =
+            now.toLocaleDateString('en-US', options) +
+            " at " +
+            now.toLocaleTimeString('en-US');
+
+        dateBox.textContent = formattedDate;
+    }
+
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+</script>
+
+</body>
+</html>
+
+
+
+
+CSS
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f3f8f3;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 260px;
+    background: #d4e8d4;
+    height: 100vh;
+    padding: 25px;
+}
+
+.logo {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.menu-section {
+    font-size: 14px;
+    margin-top: 20px;
+    color: #4b4b4b;
+    font-weight: bold;
+}
+
+.menu {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.menu li {
+    padding: 12px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.menu li.active,
+.menu li:hover {
+    background: #4c9f58;
+    color: white;
+}
+
+.admin-box {
+    position: absolute;
+    bottom: 20px;
+    left: 25px;
+    background: #fff;
+    padding: 15px;
+    width: 210px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.main {
+    width: 100%;
+    padding: 30px;
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date-box {
+    background: #4c9f58;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+}
+
+.cards {
+    display: flex;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.card {
+    flex: 1;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #e2e2e2;
+}
+
+.card h3 {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.card p {
+    font-size: 18px;
+}
+
+.table-section {
+    margin-top: 30px;
+}
+
+.table-title {
+    background: #4c9f58;
+    color: white;
+    padding: 12px;
+    border-radius: 10px 10px 0 0;
+    font-size: 18px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.empty {
+    text-align: center;
+    padding: 20px;
+    color: gray;
+}
+
+.active-status {
+    padding: 5px 12px;
+    background: #4c9f58;
+    color: white;
+    border-radius: 20px;
+}
+
