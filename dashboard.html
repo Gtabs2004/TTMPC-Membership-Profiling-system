@@ -6,24 +6,15 @@
     <title>TTMPC Dashboard</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 
 <body>
 
-<!-- Overlay -->
-<div class="photo-overlay" id="photoOverlay">
-    <div class="overlay-content">
-        <button class="reveal-button">
-            <i class="fas fa-eye"></i> Enter Dashboard
-        </button>
-    </div>
-</div>
-
-<div class="dashboard-wrapper" id="dashboardWrapper">
+<div class="dashboard-wrapper content-revealed">
 
     <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
+    <div class="sidebar animate">
         <nav class="nav">
 
             <div class="nav-section" style="margin-top:1rem">
@@ -64,7 +55,7 @@
                 <i class="fas fa-chevron-down dropdown-arrow"></i>
             </div>
 
-            <div class="dropdown-menu">
+            <div class="dropdown-menu show">
                 <button class="dropdown-item">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </button>
@@ -76,12 +67,14 @@
     </div>
 
     <!-- Main Content -->
-    <main class="main-content" id="mainContent">
+    <main class="main-content animate">
 
         <div class="header">
             <h1>Dashboard</h1>
             <div class="header-info">
-                <div class="time-display" id="currentTime"></div>
+                <div class="time-display">
+                    Monday, January 1, 2025 · 10:00 AM
+                </div>
             </div>
         </div>
 
@@ -89,26 +82,26 @@
 
             <!-- Stats -->
             <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number" id="totalMembers">0</div>
+                <div class="stat-card animate">
+                    <div class="stat-number">128</div>
                     <div class="stat-label">Total Members</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="staffMembers">0</div>
+                <div class="stat-card animate">
+                    <div class="stat-number">12</div>
                     <div class="stat-label">Staff Members</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="activeMembers">0</div>
+                <div class="stat-card animate">
+                    <div class="stat-number">102</div>
                     <div class="stat-label">Active Members</div>
                 </div>
             </div>
 
             <!-- Staff Table -->
-            <div class="table-container">
+            <div class="table-container animate">
                 <div class="table-header">
                     <i class="fas fa-users"></i> Staff Members
                 </div>
-                <table id="staffTable">
+                <table>
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -117,16 +110,35 @@
                             <th>Status</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        <tr>
+                            <td>Maria Santos</td>
+                            <td>Manager</td>
+                            <td>Operations</td>
+                            <td><span class="status active">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>Juan Dela Cruz</td>
+                            <td>Accountant</td>
+                            <td>Finance</td>
+                            <td><span class="status active">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>Ana Reyes</td>
+                            <td>Clerk</td>
+                            <td>Membership</td>
+                            <td><span class="status inactive">Inactive</span></td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
 
             <!-- Recent Members -->
-            <div class="table-container">
+            <div class="table-container animate">
                 <div class="table-header">
                     <i class="fas fa-users"></i> Recent Members
                 </div>
-                <table id="recentMembersTable">
+                <table>
                     <thead>
                         <tr>
                             <th>Member ID</th>
@@ -136,104 +148,35 @@
                             <th>MIGS Status</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        <tr>
+                            <td>M-001</td>
+                            <td>Pedro Lopez</td>
+                            <td>2024-01-12</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>Approved</td>
+                        </tr>
+                        <tr>
+                            <td>M-002</td>
+                            <td>Liza Ramos</td>
+                            <td>2024-02-05</td>
+                            <td><span class="status inactive">Inactive</span></td>
+                            <td>Pending</td>
+                        </tr>
+                        <tr>
+                            <td>M-003</td>
+                            <td>Carlos Mendoza</td>
+                            <td>2024-03-20</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>Approved</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
 
         </div>
     </main>
 </div>
-
-<script>
-/* ================= CLOCK ================= */
-function updateTime() {
-    const now = new Date();
-    document.getElementById('currentTime').textContent =
-        now.toLocaleString('en-US', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit'
-        });
-}
-setInterval(updateTime, 1000);
-updateTime();
-
-/* ================= OVERLAY ================= */
-document.getElementById('photoOverlay').addEventListener('click', () => {
-    photoOverlay.classList.add('moved-up');
-    dashboardWrapper.classList.add('content-revealed');
-
-    setTimeout(() => {
-        sidebar.classList.add('animate');
-        mainContent.classList.add('animate');
-
-        document.querySelectorAll('.stat-card').forEach((c, i) =>
-            setTimeout(() => c.classList.add('animate'), 400 + i * 100)
-        );
-
-        document.querySelectorAll('.table-container').forEach((t, i) =>
-            setTimeout(() => t.classList.add('animate'), 800 + i * 200)
-        );
-    }, 400);
-});
-
-/* ================= DROPDOWN ================= */
-document.querySelector('.user-profile').addEventListener('click', e => {
-    e.stopPropagation();
-    document.querySelector('.dropdown-menu').classList.toggle('show');
-});
-
-/* ================= STATIC DATABASE ================= */
-const dashboardStats = {
-    totalMembers: 128,
-    staffMembers: 12,
-    activeMembers: 102
-};
-
-const staffData = [
-    { name: "Maria Santos", position: "Manager", department: "Operations", status: "Active" },
-    { name: "Juan Dela Cruz", position: "Accountant", department: "Finance", status: "Active" },
-    { name: "Ana Reyes", position: "Clerk", department: "Membership", status: "Inactive" }
-];
-
-const membersData = [
-    { member_code: "M-001", name: "Pedro Lopez", date_joined: "2024-01-12", status: "Active", MIGS_Status: "Approved" },
-    { member_code: "M-002", name: "Liza Ramos", date_joined: "2024-02-05", status: "Inactive", MIGS_Status: "Pending" },
-    { member_code: "M-003", name: "Carlos Mendoza", date_joined: "2024-03-20", status: "Active", MIGS_Status: "Approved" }
-];
-
-/* ================= POPULATE DATA ================= */
-totalMembers.textContent = dashboardStats.totalMembers;
-staffMembers.textContent = dashboardStats.staffMembers;
-activeMembers.textContent = dashboardStats.activeMembers;
-
-const staffBody = document.querySelector("#staffTable tbody");
-staffData.forEach(s => {
-    staffBody.innerHTML += `
-        <tr>
-            <td>${s.name}</td>
-            <td>${s.position}</td>
-            <td>${s.department}</td>
-            <td><span class="status ${s.status.toLowerCase()}">${s.status}</span></td>
-        </tr>`;
-});
-
-const memberBody = document.querySelector("#recentMembersTable tbody");
-membersData.forEach(m => {
-    memberBody.innerHTML += `
-        <tr>
-            <td>${m.member_code}</td>
-            <td>${m.name}</td>
-            <td>${m.date_joined}</td>
-            <td><span class="status ${m.status.toLowerCase()}">${m.status}</span></td>
-            <td>${m.MIGS_Status}</td>
-        </tr>`;
-});
-</script>
 
 </body>
 </html>
