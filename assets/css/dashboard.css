@@ -37,7 +37,7 @@ body {
 .nav-item:hover,
 .nav-item:active {
     text-decoration: none;
-    color: inherit;
+    color: #2d5016;
 }
 
 
@@ -81,13 +81,13 @@ body {
 }
 
 /* =======================
-   USER PROFILE
+   USER PROFILE CARD
 ======================= */
 .user-profile {
-    margin: auto 15px 15px;
-    background: white;
-    border-radius: 14px;
-    padding: 12px;
+    margin: 16px;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 10px 12px;
     cursor: pointer;
     position: relative;
 }
@@ -98,77 +98,87 @@ body {
     gap: 12px;
 }
 
-.user-icon img {
-    height: 38px;
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-.user-info {
+.user-text {
     flex: 1;
 }
 
 .user-name {
     font-weight: 600;
     font-size: 14px;
+    color: #1f2937;
 }
 
 .user-role {
     font-size: 12px;
-    color: #6fa96f;
+    color: #6aa463;
 }
 
-.dropdown-arrow {
+.chevron {
     font-size: 12px;
-    color: #6fa96f;
+    color: #6aa463;
+    transition: transform 0.2s ease;
+}
+
+/* ROTATE CHEVRON WHEN OPEN */
+.user-profile.open .chevron {
+    transform: rotate(180deg);
 }
 
 /* =======================
    DROPDOWN MENU
 ======================= */
-.dropdown-menu {
+.profile-dropdown {
     display: none;
     position: absolute;
-    bottom: 70px;
+    bottom: 75px;
     left: 0;
     right: 0;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
+    background: #ffffff;
+    border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-    z-index: 10;
+    padding: 8px;
 }
 
-.dropdown-menu.show {
+.profile-dropdown.show {
     display: block;
 }
 
-.dropdown-item {
-    padding: 12px 16px;
-    border: none;
-    background: none;
+.dropdown-link {
     width: 100%;
+    border: none;
+    background: transparent;
+    padding: 12px 14px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    cursor: pointer;
+    gap: 12px;
     font-size: 14px;
+    cursor: pointer;
+    border-radius: 12px;
+    color: #1f2937;
 }
 
-.dropdown-item i {
-    width: 18px;
+.dropdown-link i {
+    font-size: 16px;
 }
 
-.dropdown-item:hover {
+.dropdown-link:hover {
     background: #f0fff0;
 }
 
-
-
-.dropdown-item.logout {
-    color: red;   /* text */
+/* LOGOUT STYLE */
+.dropdown-link.logout {
+    color: #d14343;
 }
 
-.dropdown-item.logout i {
-    color: red;   /* icon */
+.dropdown-link.logout:hover {
+    background: #fff0f0;
 }
 
 
