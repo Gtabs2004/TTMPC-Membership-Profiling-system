@@ -6,7 +6,7 @@
     <title>TTMPC Dashboard</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -28,17 +28,17 @@
 
             <div class="nav-section" style="margin-top:1rem">
                 <div class="nav-section-title">Main</div>
-                <a href="dashboard.html" class="nav-item active">
+                <a href="#" class="nav-item active">
                     <i class="fas fa-chart-line"></i> Dashboard
                 </a>
             </div>
 
             <div class="nav-section">
                 <div class="nav-section-title">Members</div>
-                <a href="memberApplication.html" class="nav-item">
+                <a href="#" class="nav-item">
                     <i class="fas fa-user-plus"></i> Membership Application
                 </a>
-                <a href="managemember.html" class="nav-item">
+                <a href="#" class="nav-item">
                     <i class="fas fa-users-cog"></i> Manage Members
                 </a>
             </div>
@@ -48,16 +48,7 @@
                 <a class="nav-item">
                     <i class="fas fa-calculator"></i> Finances
                 </a>
-                <div class="submenu">
-                    <a href="loans.html" class="nav-item">
-                        <i class="fas fa-handshake"></i> Finance
-                    </a>
-                    <a href="ManageSavings.html" class="nav-item">
-                        <i class="fas fa-piggy-bank"></i> Savings
-                    </a>
-                </div>
             </div>
-
         </nav>
 
         <!-- User Profile -->
@@ -74,10 +65,10 @@
             </div>
 
             <div class="dropdown-menu">
-                <button class="dropdown-item logout-item" onclick="logout()">
+                <button class="dropdown-item">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </button>
-                <button class="dropdown-item logout-item" onclick="settings()">
+                <button class="dropdown-item">
                     <i class="fas fa-cog"></i> Settings
                 </button>
             </div>
@@ -154,84 +145,93 @@
 </div>
 
 <script>
-/* Clock */
+/* ================= CLOCK ================= */
 function updateTime() {
     const now = new Date();
     document.getElementById('currentTime').textContent =
-        now.toLocaleDateString('en-US', {
-            weekday: 'long', year: 'numeric', month: 'long',
-            day: 'numeric', hour: '2-digit',
-            minute: '2-digit', second: '2-digit'
+        now.toLocaleString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
         });
 }
 setInterval(updateTime, 1000);
 updateTime();
 
-/* Overlay */
+/* ================= OVERLAY ================= */
 document.getElementById('photoOverlay').addEventListener('click', () => {
-    document.getElementById('photoOverlay').classList.add('moved-up');
-    document.getElementById('dashboardWrapper').classList.add('content-revealed');
+    photoOverlay.classList.add('moved-up');
+    dashboardWrapper.classList.add('content-revealed');
+
+    setTimeout(() => {
+        sidebar.classList.add('animate');
+        mainContent.classList.add('animate');
+
+        document.querySelectorAll('.stat-card').forEach((c, i) =>
+            setTimeout(() => c.classList.add('animate'), 400 + i * 100)
+        );
+
+        document.querySelectorAll('.table-container').forEach((t, i) =>
+            setTimeout(() => t.classList.add('animate'), 800 + i * 200)
+        );
+    }, 400);
 });
 
-/* Dropdown */
+/* ================= DROPDOWN ================= */
 document.querySelector('.user-profile').addEventListener('click', e => {
     e.stopPropagation();
     document.querySelector('.dropdown-menu').classList.toggle('show');
 });
 
-/* Logout */
-function logout() {
-    if (confirm('Are you sure you want to logout?')) {
-        window.location.href = 'login.html';
-    }
-}
+/* ================= STATIC DATABASE ================= */
+const dashboardStats = {
+    totalMembers: 128,
+    staffMembers: 12,
+    activeMembers: 102
+};
 
-function settings() {
-    window.location.href = 'settings.html';
-}
+const staffData = [
+    { name: "Maria Santos", position: "Manager", department: "Operations", status: "Active" },
+    { name: "Juan Dela Cruz", position: "Accountant", department: "Finance", status: "Active" },
+    { name: "Ana Reyes", position: "Clerk", department: "Membership", status: "Inactive" }
+];
 
-/* Fetch Stats */
-fetch('actions/fetch_dashboard_stats.php')
-.then(res => res.json())
-.then(data => {
-    totalMembers.textContent = data.total_members;
-    staffMembers.textContent = data.staff_members;
-    activeMembers.textContent = data.active_members;
+const membersData = [
+    { member_code: "M-001", name: "Pedro Lopez", date_joined: "2024-01-12", status: "Active", MIGS_Status: "Approved" },
+    { member_code: "M-002", name: "Liza Ramos", date_joined: "2024-02-05", status: "Inactive", MIGS_Status: "Pending" },
+    { member_code: "M-003", name: "Carlos Mendoza", date_joined: "2024-03-20", status: "Active", MIGS_Status: "Approved" }
+];
+
+/* ================= POPULATE DATA ================= */
+totalMembers.textContent = dashboardStats.totalMembers;
+staffMembers.textContent = dashboardStats.staffMembers;
+activeMembers.textContent = dashboardStats.activeMembers;
+
+const staffBody = document.querySelector("#staffTable tbody");
+staffData.forEach(s => {
+    staffBody.innerHTML += `
+        <tr>
+            <td>${s.name}</td>
+            <td>${s.position}</td>
+            <td>${s.department}</td>
+            <td><span class="status ${s.status.toLowerCase()}">${s.status}</span></td>
+        </tr>`;
 });
 
-/* Fetch Staff */
-fetch('actions/fetch_dashboard_staff.php')
-.then(res => res.json())
-.then(data => {
-    const tbody = document.querySelector('#staffTable tbody');
-    tbody.innerHTML = '';
-    data.forEach(staff => {
-        tbody.innerHTML += `
-            <tr>
-                <td>${staff.name}</td>
-                <td>${staff.position}</td>
-                <td>${staff.department || 'N/A'}</td>
-                <td><span class="status ${staff.status.toLowerCase()}">${staff.status}</span></td>
-            </tr>`;
-    });
-});
-
-/* Fetch Members */
-fetch('actions/fetch_recent_members.php')
-.then(res => res.json())
-.then(data => {
-    const tbody = document.querySelector('#recentMembersTable tbody');
-    tbody.innerHTML = '';
-    data.forEach(m => {
-        tbody.innerHTML += `
-            <tr>
-                <td>${m.member_code}</td>
-                <td>${m.name}</td>
-                <td>${m.date_joined}</td>
-                <td><span class="status ${m.status.toLowerCase()}">${m.status}</span></td>
-                <td>${m.MIGS_Status || 'N/A'}</td>
-            </tr>`;
-    });
+const memberBody = document.querySelector("#recentMembersTable tbody");
+membersData.forEach(m => {
+    memberBody.innerHTML += `
+        <tr>
+            <td>${m.member_code}</td>
+            <td>${m.name}</td>
+            <td>${m.date_joined}</td>
+            <td><span class="status ${m.status.toLowerCase()}">${m.status}</span></td>
+            <td>${m.MIGS_Status}</td>
+        </tr>`;
 });
 </script>
 
