@@ -119,3 +119,12 @@ document.querySelectorAll('.team-card').forEach(card => {
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeModal();
     });
+
+
+
+
+
+
+
+
+   

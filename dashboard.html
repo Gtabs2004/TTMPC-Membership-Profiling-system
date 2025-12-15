@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTMPC Dashboard</title>
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <nav class="nav">
+
+            <div class="nav-section">
+                <div class="nav-section-title">Main</div>
+                <a class="nav-item active">
+                    <i class="fas fa-chart-line"></i> Dashboard
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Members</div>
+                <a class="nav-item">
+                    <i class="fas fa-user-plus"></i> Membership Application
+                </a>
+                <a class="nav-item">
+                    <i class="fas fa-users-cog"></i> Manage Members
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Financial</div>
+                <a class="nav-item">
+                    <i class="fas fa-calculator"></i> Finances
+                </a>
+            </div>
+
+        </nav>
+
+        <!-- ========== USER PROFILE DROPDOWN ========== -->
+        <div class="user-profile" id="userProfile">
+
+            <div class="user-profile-content">
+                <div class="user-icon">
+                    <img src="assets/img/about2.png" alt="TTMPC Logo">
+                </div>
+
+                <div class="user-info">
+                    <div class="user-name">TTMPC Admin</div>
+                    <div class="user-role">Administrator</div>
+                </div>
+
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+            </div>
+
+            <!-- DROPDOWN MENU -->
+            <div class="dropdown-menu" id="dropdownMenu">
+                <button class="dropdown-item">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+                <button class="dropdown-item">
+                    <i class="fas fa-cog"></i> Settings
+                </button>
+            </div>
+
+        </div>
+
+    </aside>
+    <!-- ================= END SIDEBAR ================= -->
+
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- Header -->
+        <div class="header">
+            <h1>Dashboard</h1>
+            <div class="time-display">
+                Monday, January 1, 2025 · 10:00 AM
+            </div>
+        </div>
+
+        <!-- ================= STATS ================= -->
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-number">128</div>
+                <div class="stat-label">Total Members</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Staff Members</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">102</div>
+                <div class="stat-label">Active Members</div>
+            </div>
+
+        </div>
+
+        <!-- ================= STAFF MEMBERS ================= -->
+        <section class="table-container">
+
+            <div class="table-header">
+                <i class="fas fa-users"></i> Staff Members
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Department</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Maria Santos</td>
+                        <td>Manager</td>
+                        <td>Operations</td>
+                        <td><span class="status active">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>Juan Dela Cruz</td>
+                        <td>Accountant</td>
+                        <td>Finance</td>
+                        <td><span class="status active">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>Ana Reyes</td>
+                        <td>Clerk</td>
+                        <td>Membership</td>
+                        <td><span class="status inactive">Inactive</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>
+
+        <!-- ================= RECENT MEMBERS ================= -->
+        <section class="table-container">
+
+            <div class="table-header">
+                <i class="fas fa-user-clock"></i> Recent Members
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Member ID</th>
+                        <th>Name</th>
+                        <th>Join Date</th>
+                        <th>Status</th>
+                        <th>MIGS Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>M-001</td>
+                        <td>Pedro Lopez</td>
+                        <td>2024-01-12</td>
+                        <td><span class="status active">Active</span></td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>M-002</td>
+                        <td>Liza Ramos</td>
+                        <td>2024-02-05</td>
+                        <td><span class="status inactive">Inactive</span></td>
+                        <td>Pending</td>
+                    </tr>
+                    <tr>
+                        <td>M-003</td>
+                        <td>Carlos Mendoza</td>
+                        <td>2024-03-20</td>
+                        <td><span class="status active">Active</span></td>
+                        <td>Approved</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>
+
+    </main>
+    <!-- ================= END MAIN CONTENT ================= -->
+
+</div>
+
+<!-- Dashboard JS -->
+<script src="dashboard.js"></script>
+
+</body>
+</html>
