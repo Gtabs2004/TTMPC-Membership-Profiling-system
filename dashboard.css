@@ -31,6 +31,15 @@ body {
     display: flex;
     flex-direction: column;
 }
+.nav-item,
+.nav-item:link,
+.nav-item:visited,
+.nav-item:hover,
+.nav-item:active {
+    text-decoration: none;
+    color: inherit;
+}
+
 
 .nav {
     flex: 1;
@@ -151,6 +160,17 @@ body {
 .dropdown-item:hover {
     background: #f0fff0;
 }
+
+
+
+.dropdown-item.logout {
+    color: red;   /* text */
+}
+
+.dropdown-item.logout i {
+    color: red;   /* icon */
+}
+
 
 /* =======================
    MAIN CONTENT
@@ -279,3 +299,21 @@ tbody tr:hover {
     background: #eee;
     color: #666;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
