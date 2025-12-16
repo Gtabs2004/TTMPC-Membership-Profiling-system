@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Members - TTMPC Cooperative</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="assets/css/addMember.css">
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+    <main class="main-content">
+        <a href="#" class="back-button">
+            <i class="fa-solid fa-arrow-left"></i>
+            <a href="manageMember.html"> Backk to Dashboard </a>
+        </a>
+
+        <div class="top-header-bar">
+            <h1 class="page-title">Member Management</h1>
+        </div>
+
+        <div id="alertMessage" class="alert">
+            <span id="alertText"></span>
+        </div>
+
+        <div class="card add-member-form">
+            <div class="card-header">
+                <h2 class="form-title">
+                    <i class="fa-solid fa-user-plus"></i> Add New Member
+                </h2>
+            </div>
+            <div class="card-body">
+                <form id="addMemberForm" novalidate>
+                    <div class="form-section">
+                        <h3 class="section-title">Personal Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required placeholder="Ex: Juan">
+                            </div>
+                            <div class="form-group">
+                                <label for="middleName">Middle Name</label>
+                                <input type="text" id="middleName" name="middleName" placeholder="Ex: Dela">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required placeholder="Ex: Cruz">
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender *</label>
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="dateOfBirth">Date of Birth *</label>
+                                <input type="text" id="dateOfBirth" name="dateOfBirth" required class="date-picker">
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="number" id="age" name="age" placeholder="Auto-calc" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactNumber">Contact Number *</label>
+                                <input type="tel" id="contactNumber" name="contactNumber" required placeholder="+63 900 000 0000">
+                            </div>
+                            <div class="form-group">
+                                <label for="emailAddress">Email Address</label>
+                                <input type="email" id="emailAddress" name="emailAddress" placeholder="example@email.com">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-title">Membership Details</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="civilStatus">Civil Status *</label>
+                                <select id="civilStatus" name="civilStatus" required>
+                                    <option value="">Select Status</option>
+                                    <option value="Single">Single</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Widowed">Widowed</option>
+                                </select>
+                            </div>
+                             <div class="form-group">
+                                <label for="occupation">Occupation</label>
+                                <input type="text" id="occupation" name="occupation" placeholder="Ex: Teacher">
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="permanentAddress">Permanent Address *</label>
+                                <textarea id="permanentAddress" name="permanentAddress" required placeholder="Enter complete address"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="dateJoined">Date Joined *</label>
+                                <input type="text" id="dateJoined" name="dateJoined" required class="date-picker">
+                            </div>
+                            <div class="form-group">
+                                <label for="memberCode">Member Code</label>
+                                <input type="text" id="memberCode" name="memberCode" placeholder="Auto-generated" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <i class="fa-solid fa-plus"></i> Add Member
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="resetAddFormBtn">
+                            <i class="fa-solid fa-rotate-right"></i> Clear Form
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="assets/js/addMember.js"></script>
+
+</html>
