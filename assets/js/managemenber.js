@@ -188,21 +188,32 @@ function filterMembers() {
 // 6. UI DROPDOWN LOGIC
 // ------------------------------------------------------------------
 function setupDropdown() {
-    const userProfile = document.getElementById("userProfile");
-    const dropdownMenu = document.getElementById("dropdownMenu");
+    const userProfile = document.getElementById('userProfile');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const logoutBtn = document.querySelector('.logout'); // Select the logout button
 
-    if (userProfile && dropdownMenu) {
-        userProfile.addEventListener("click", (e) => {
-            e.stopPropagation(); // Prevent closing immediately
-            dropdownMenu.classList.toggle("show");
-            userProfile.classList.toggle("open");
+    if(userProfile && dropdownMenu) {
+        // Toggle dropdown
+        userProfile.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('show');
         });
 
         // Close when clicking outside
-        document.addEventListener("click", (e) => {
+        document.addEventListener('click', (e) => {
             if (!userProfile.contains(e.target)) {
-                dropdownMenu.classList.remove("show");
-                userProfile.classList.remove("open");
+                dropdownMenu.classList.remove('show');
+            }
+        });
+    }
+
+    // Logout Functionality
+    if(logoutBtn) {
+        logoutBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Stop any default link behavior
+            if(confirm("Are you sure you want to logout?")) {
+                // Redirect to login page (assuming index.html is your login)
+                window.location.href = "index.html"; 
             }
         });
     }

@@ -61,7 +61,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #2d5016;
+    color: #6fa96f;
     cursor: pointer;
     border-radius: 10px;
     margin: 5px 10px;
@@ -191,7 +191,7 @@ body {
 }
 
 .btn-manage-staff {
-  background: linear-gradient(135deg,rgb(50, 127, 70),rgb(13, 150, 8));
+  background: #6fa96f;
   color: white;
   padding: 0.5rem 0.875rem;
   border: none;
@@ -396,7 +396,7 @@ body {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, #2f855a, #38a169, #48bb78);
+  background: #6fa96f;
   border-radius: 8px 8px 0 0;
 }
 
@@ -422,7 +422,7 @@ body {
 .search-section input:focus,
 .search-section select:focus {
   outline: none;
-  border-color: #2f855a;
+  border-color: #6fa96f;
   background: white;
   box-shadow: 0 0 0 2px rgba(47, 133, 90, 0.1);
   transform: translateY(-1px);
@@ -468,7 +468,7 @@ body {
 }
 
 .btn-search {
-  background: linear-gradient(135deg, #2f855a, #38a169);
+  background: #6fa96f;
   color: white;
   box-shadow: 0 2px 8px rgba(47, 133, 90, 0.2);
 }
@@ -517,7 +517,7 @@ body {
 }
 
 .total-members-banner strong {
-  color: #2f855a;
+  color: #6fa96f;
   font-size: 1rem;
 }
 
@@ -537,7 +537,7 @@ body {
 }
 
 .member-table th {
-  background: linear-gradient(135deg, #2f855a, #38a169);
+  background: #6fa96f;
   color: white;
   padding: 0.75rem 0.75rem;
   font-weight: 600;
