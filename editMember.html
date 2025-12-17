@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Member Profile - TTMPC</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/edit.css">
+</head>
+<body class="manage-members-page">
+    
+<div class="dashboard-wrapper">
+    
+    <main class="main-content" role="main">
+        <div class="content-container">
+            
+            <div id="alertMessage" class="alert"></div>
+
+            <section class="profile-header">
+                <div class="back-button-wrapper">
+                    <a href="manageMember.html" class="back bttn">
+                        <i class="fa-solid fa-arrow-left"></i> Back to Members
+                    </a>
+                </div>
+                
+                <div class="profile-header-content">
+                    <div class="profile-avatar">
+                        <div class="profile-pic-container">
+                            <img src="https://via.placeholder.com/150" id="profileImage" class="profile-pic" alt="Profile Picture">
+                            <div class="upload-overlay">
+                                <i class="fa-solid fa-camera"></i> Change
+                            </div>
+                            <input type="file" id="profile-photo-input" style="display: none;" accept="image/*">
+                        </div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1 id="displayName">Loading...</h1>
+                        <div class="profile-meta">
+                            <span class="status-badge" id="displayStatus">Active</span>
+                            <span class="member-id">Member ID: <span id="displayMemberCode">...</span></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <form id="memberForm" class="member-form">
+                
+                <div class="form-card">
+                    <h2 class="section-title">
+                        <i class="fas fa-user-circle"></i> Personal Information
+                    </h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" id="firstName" name="firstName" disabled />
+                        </div>
+                        <div class="form-group">
+                            <label>Middle Name</label>
+                            <input type="text" id="middleName" name="middleName" disabled />
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" id="lastName" name="lastName" disabled />
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="email" name="email" disabled />
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Number</label>
+                            <input type="text" id="contactNumber" name="contactNumber" disabled />
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select id="gender" name="gender" disabled>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Civil Status</label>
+                            <select id="civilStatus" name="civilStatus" disabled>
+                                <option value="Single">Single</option>
+                                <option value="Married">Married</option>
+                                <option value="Divorced">Divorced</option>
+                                <option value="Widowed">Widowed</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Date of Birth</label>
+                            <input type="date" id="dateOfBirth" name="dateOfBirth" disabled />
+                        </div>
+                        <div class="form-group">
+                            <label>Age</label>
+                            <input type="number" id="age" name="age" disabled readonly style="background-color:#f9fafb;"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Occupation</label>
+                            <input type="text" id="occupation" name="occupation" disabled />
+                        </div>
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label>Permanent Address</label>
+                            <input type="text" id="permanentAddress" name="permanentAddress" disabled />
+                        </div>
+
+                </div>
+
+                <div class="form-card">
+                    <h2 class="section-title">
+                        <i class="fas fa-id-card"></i> Membership Information
+                    </h2>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Member Code</label>
+                            <input type="text" id="memberCode" name="memberCode" disabled required style="background-color:#f0fdf4; font-weight:bold;">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Date Joined</label>
+                            <input type="date" id="dateJoined" name="dateJoined" disabled required>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select id="status" name="status" disabled>
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                                <option value="Terminated">Terminated</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" id="editInfoBtn" class="btn btn-secondary">
+                        <i class="fas fa-pen"></i> Edit Info
+                    </button>
+                    
+                    <button type="submit" id="saveBtn" class="btn btn-primary" style="display: none;">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                    
+                    <button type="button" id="cancelEditBtn" class="btn btn-danger" style="display: none;">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
+
+<script type="module" src="assets/js/edit.js"></script>
+</body>
+</html>
