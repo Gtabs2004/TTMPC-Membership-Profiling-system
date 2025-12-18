@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebas
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
 import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
-// Firebase Config (same as Create_Account.js)
+// Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyCs8xLwJfTsVDhSQvFsMHGPPfFAmFq-pxY",
   authDomain: "ttmpc-member-profiling.firebaseapp.com",
@@ -21,23 +21,23 @@ const db = getFirestore(app);
 
 // Global login function (called by inline onclick in HTML)
 window.login = async function() {
-  const firstName = document.getElementById("firstName").value.trim();
-  const lastName = document.getElementById("lastName").value.trim();
+  // MODIFIED: Get username instead of names
+  const usernameInput = document.getElementById("username").value.trim().toLowerCase(); // Normalize input to lowercase
   const password = document.getElementById("password").value;
 
-  if (!firstName || !lastName || !password) {
-    showAlert("Please enter first name, last name, and password", "error");
+  if (!usernameInput || !password) {
+    showAlert("Please enter username and password", "error");
     return;
   }
 
   try {
-    // Query Firestore for user by firstName and lastName
+    // MODIFIED: Query Firestore by 'username'
     const usersRef = collection(db, "TTMPC_USERS");
-    const q = query(usersRef, where("firstName", "==", firstName), where("lastName", "==", lastName));
+    const q = query(usersRef, where("username", "==", usernameInput));
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.empty) {
-      showAlert("Invalid credentials", "error");
+      showAlert("Username not found", "error");
       return;
     }
 
@@ -47,6 +47,7 @@ window.login = async function() {
 
     querySnapshot.forEach((doc) => {
       const user = doc.data();
+      // Simple password check (Note: In production, use Firebase Auth)
       if (user.password === password) {
         foundMatch = true;
         userData = { ...user, uid: doc.id };
@@ -54,20 +55,21 @@ window.login = async function() {
     });
 
     if (!foundMatch) {
-      showAlert("Invalid credentials", "error");
+      showAlert("Incorrect password", "error");
       return;
     }
 
-    // Store login info in sessionStorage for dashboard access
+    // Store login info in sessionStorage
     sessionStorage.setItem("currentUser", JSON.stringify({
       uid: userData.uid,
+      username: userData.username, // Added username to session storage
       firstName: userData.firstName,
       lastName: userData.lastName,
       loginTime: new Date().toISOString()
     }));
 
     showAlert("Login successful! Redirecting...", "success");
-    ``
+    
     setTimeout(() => {
       window.location.href = "dashboard.html";
     }, 1500);
@@ -76,10 +78,9 @@ window.login = async function() {
     console.error('Login error:', error);
     const msg = error?.message || String(error);
     const isPermission = error?.code === 'permission-denied' || (msg && msg.includes('Missing or insufficient permissions'));
+    
     if (isPermission) {
       showAlert('Permission denied: cannot read from Firestore. Update Firestore rules.', 'error');
-      console.info('Developer hint: temporary development rules:\n',
-        `service cloud.firestore {\n  match /databases/{database}/documents {\n    match /{document=**} { allow read, write: if true; }\n  }\n}`);
     } else {
       showAlert('Error: ' + msg, 'error');
     }
@@ -104,4 +105,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-
