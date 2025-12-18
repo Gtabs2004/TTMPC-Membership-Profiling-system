@@ -1,220 +1,146 @@
-/* --- Mock Data (Simulating Database) --- */
-let members = [
-    { id: 1, memberCode: "MEM2025001", firstName: "Maria", middleName: "Santos", lastName: "Cruz", gender: "Female", dateOfBirth: "1985-05-15", contactNumber: "+639171234567", email: "maria@test.com", status: "Active", dateJoined: "2023-01-10", civilStatus: "Married", occupation: "Teacher", permanentAddress: "Tubungan, Iloilo" },
-    { id: 2, memberCode: "MEM2025002", firstName: "Jose", middleName: "R.", lastName: "Rizal", gender: "Male", dateOfBirth: "1990-06-19", contactNumber: "+639181234567", email: "jose@test.com", status: "Active", dateJoined: "2023-02-15", civilStatus: "Single", occupation: "Doctor", permanentAddress: "Tubungan, Iloilo" },
-    { id: 3, memberCode: "MEM2025003", firstName: "Juan", middleName: "D.", lastName: "Dela Cruz", gender: "Male", dateOfBirth: "1975-12-01", contactNumber: "+639191234567", email: "juan@test.com", status: "Inactive", dateJoined: "2022-11-05", civilStatus: "Married", occupation: "Farmer", permanentAddress: "Igbaras, Iloilo" },
-    { id: 4, memberCode: "MEM2025004", firstName: "Ana", middleName: "L.", lastName: "Reyes", gender: "Female", dateOfBirth: "1995-08-20", contactNumber: "+639201234567", email: "ana@test.com", status: "Active", dateJoined: "2024-01-05", civilStatus: "Single", occupation: "Nurse", permanentAddress: "Leon, Iloilo" }
-];
+// ------------------------------------------------------------------
+// 1. FIREBASE IMPORTS & CONFIGURATION
+// ------------------------------------------------------------------
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-/* --- State Management --- */
-let filteredMembers = [...members];
-let currentPage = 1;
-const itemsPerPage = 5;
+// Your Firebase Config
+const firebaseConfig = {
+  apiKey: "AIzaSyCs8xLwJfTsVDhSQvFsMHGPPfFAmFq-pxY",
+  authDomain: "ttmpc-member-profiling.firebaseapp.com",
+  projectId: "ttmpc-member-profiling",
+  storageBucket: "ttmpc-member-profiling.firebasestorage.app",
+  messagingSenderId: "83279335158",
+  appId: "1:83279335158:web:7060b6ccff4e88d31aa6d7",
+  measurementId: "G-SLLY23H3YF"
+};
 
-/* --- Initialization --- */
+// Initialize Backend Connection
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const membersCollection = collection(db, "TTMPC_MEMBERS");
+
+// ------------------------------------------------------------------
+// 2. INITIALIZATION
+// ------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-    // Init Date Pickers
-    flatpickr(".date-picker", {
-        dateFormat: "Y-m-d",
-        maxDate: "today"
-    });
+    if(window.flatpickr) {
+        flatpickr(".date-picker", {
+            dateFormat: "Y-m-d",
+            maxDate: "today"
+        });
+    }
 
-    // Event Listeners
+    const dateJoinedInput = document.getElementById('dateJoined');
+    if(dateJoinedInput) {
+        dateJoinedInput.value = new Date().toISOString().split('T')[0];
+    }
+
     setupEventListeners();
-    
-    // Initial Render
-    renderTable();
-    
-    // Auto-set Date Joined to today
-    document.getElementById('dateJoined').value = new Date().toISOString().split('T')[0];
 });
 
-/* --- Event Handlers --- */
+// ------------------------------------------------------------------
+// 3. EVENT LISTENERS
+// ------------------------------------------------------------------
 function setupEventListeners() {
-    // Add Member
-    document.getElementById('addMemberForm').addEventListener('submit', handleAddMember);
-    
-    // Edit Member
-    document.getElementById('editMemberForm').addEventListener('submit', handleSaveEdit);
-    
-    // Search & Filter
-    document.getElementById('searchInput').addEventListener('input', handleFilter);
-    document.getElementById('genderFilter').addEventListener('change', handleFilter);
-    document.getElementById('statusFilter').addEventListener('change', handleFilter);
+    const dobInput = document.getElementById('dateOfBirth');
+    if(dobInput) {
+        dobInput.addEventListener('change', function() {
+            document.getElementById('age').value = calculateAge(this.value);
+        });
+    }
 
-    // Reset Button
-    document.getElementById('resetAddFormBtn').addEventListener('click', () => {
-        document.getElementById('addMemberForm').reset();
-        document.getElementById('age').value = '';
-    });
+    const form = document.getElementById('addMemberForm');
+    if(form) {
+        form.addEventListener('submit', saveMemberToDatabase);
+    }
 
-    // Calculate Age on input change
-    document.getElementById('dateOfBirth').addEventListener('change', function() {
-        const age = calculateAge(this.value);
-        document.getElementById('age').value = age;
-    });
-}
-
-/* --- Core Logic --- */
-
-// 1. Add Member
-function handleAddMember(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(e.target);
-    const newId = members.length > 0 ? Math.max(...members.map(m => m.id)) + 1 : 1;
-    
-    const newMember = {
-        id: newId,
-        memberCode: `MEM2025${String(newId).padStart(3, '0')}`,
-        firstName: formData.get('firstName'),
-        middleName: formData.get('middleName'),
-        lastName: formData.get('lastName'),
-        gender: formData.get('gender'),
-        dateOfBirth: formData.get('dateOfBirth'),
-        contactNumber: formData.get('contactNumber'),
-        email: formData.get('emailAddress'),
-        civilStatus: formData.get('civilStatus'),
-        occupation: formData.get('occupation'),
-        permanentAddress: formData.get('permanentAddress'),
-        dateJoined: formData.get('dateJoined'),
-        status: 'Active' // Default
-    };
-
-    members.unshift(newMember); // Add to top
-    filteredMembers = [...members]; // Reset filters
-    
-    showAlert('Member added successfully!', 'success');
-    e.target.reset();
-    renderTable();
-}
-
-// 2. Delete Member
-function deleteMember(id) {
-    if(confirm('Are you sure you want to delete this member?')) {
-        members = members.filter(m => m.id !== id);
-        handleFilter(); // Re-apply current filters
-        showAlert('Member deleted.', 'success');
+    const resetBtn = document.getElementById('resetAddFormBtn');
+    if(resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            form.reset();
+            document.getElementById('age').value = '';
+            document.getElementById('dateJoined').value = new Date().toISOString().split('T')[0];
+        });
     }
 }
 
-// 3. Edit Member (Open Modal)
-function openEditModal(id) {
-    const member = members.find(m => m.id === id);
-    if (!member) return;
-
-    // Populate Form
-    document.getElementById('editMemberId').value = member.id;
-    document.getElementById('editFirstName').value = member.firstName;
-    document.getElementById('editLastName').value = member.lastName;
-    document.getElementById('editContactNumber').value = member.contactNumber;
-    document.getElementById('editEmailAddress').value = member.email;
-    document.getElementById('editStatus').value = member.status;
-
-    document.getElementById('editMemberModal').classList.add('show');
-}
-
-// 4. Save Edit
-function handleSaveEdit(e) {
+// ------------------------------------------------------------------
+// 4. CORE FUNCTION: SAVE TO DATABASE
+// ------------------------------------------------------------------
+async function saveMemberToDatabase(e) {
     e.preventDefault();
-    const id = parseInt(document.getElementById('editMemberId').value);
-    const memberIndex = members.findIndex(m => m.id === id);
 
-    if (memberIndex !== -1) {
-        members[memberIndex].firstName = document.getElementById('editFirstName').value;
-        members[memberIndex].lastName = document.getElementById('editLastName').value;
-        members[memberIndex].contactNumber = document.getElementById('editContactNumber').value;
-        members[memberIndex].email = document.getElementById('editEmailAddress').value;
-        members[memberIndex].status = document.getElementById('editStatus').value;
+    const submitBtn = document.getElementById('submitBtn');
+    const form = e.target;
 
-        handleFilter(); // Refresh view
-        closeEditModal();
-        showAlert('Member updated successfully.', 'success');
-    }
-}
-
-function closeEditModal() {
-    document.getElementById('editMemberModal').classList.remove('show');
-}
-
-/* --- Display & Utilities --- */
-
-function handleFilter() {
-    const search = document.getElementById('searchInput').value.toLowerCase();
-    const gender = document.getElementById('genderFilter').value;
-    const status = document.getElementById('statusFilter').value;
-
-    filteredMembers = members.filter(m => {
-        const matchesSearch = (m.firstName + ' ' + m.lastName).toLowerCase().includes(search) || 
-                              m.memberCode.toLowerCase().includes(search);
-        const matchesGender = gender === '' || m.gender === gender;
-        const matchesStatus = status === '' || m.status === status;
-        
-        return matchesSearch && matchesGender && matchesStatus;
-    });
-
-    currentPage = 1;
-    renderTable();
-}
-
-function renderTable() {
-    const tbody = document.getElementById('memberTableBody');
-    const start = (currentPage - 1) * itemsPerPage;
-    const paginatedItems = filteredMembers.slice(start, start + itemsPerPage);
-
-    tbody.innerHTML = '';
-
-    if (paginatedItems.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 2rem;">No members found.</td></tr>`;
+    if (!form.checkValidity()) {
+        showAlert("Please fill out all required fields.", "error");
         return;
     }
 
-    paginatedItems.forEach(m => {
-        const row = `
-            <tr>
-                <td><strong>${m.memberCode}</strong></td>
-                <td>
-                    <div style="font-weight:600">${m.lastName}, ${m.firstName}</div>
-                    <div style="font-size:0.8rem; color:#64748b">${m.email || ''}</div>
-                </td>
-                <td>${m.gender}</td>
-                <td>${m.contactNumber}</td>
-                <td>${m.dateJoined}</td>
-                <td>
-                    <span class="status-badge ${m.status.toLowerCase()}">${m.status}</span>
-                </td>
-                <td>
-                    <button class="btn btn-sm btn-info" onclick="openEditModal(${m.id})">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-                    <button class="btn btn-sm btn-danger" onclick="deleteMember(${m.id})">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </td>
-            </tr>
-        `;
-        tbody.innerHTML += row;
-    });
+    // UI Feedback
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.innerText = "Generating ID & Saving...";
+    submitBtn.disabled = true;
 
-    renderPagination();
-}
+    // --- GENERATE MEMBER CODE ---
+    // Format: MEM-2025-XXXX (Random 4 digits)
+    const currentYear = new Date().getFullYear();
+    const randomId = Math.floor(1000 + Math.random() * 9000);
+    const generatedMemberCode = `MEM-${currentYear}-${randomId}`;
 
-function renderPagination() {
-    const totalPages = Math.ceil(filteredMembers.length / itemsPerPage);
-    const pagination = document.getElementById('pagination');
+    // Gather Data
+    const formData = new FormData(form);
     
-    let buttons = '';
-    for (let i = 1; i <= totalPages; i++) {
-        buttons += `<button class="btn btn-sm ${i === currentPage ? 'btn-primary' : 'btn-secondary'}" onclick="goToPage(${i})">${i}</button>`;
+    const newMemberData = {
+        // Personal Info
+        firstName: formData.get('firstName').trim(),
+        middleName: formData.get('middleName').trim(),
+        lastName: formData.get('lastName').trim(),
+        gender: formData.get('gender'),
+        dateOfBirth: formData.get('dateOfBirth'),
+        age: document.getElementById('age').value,
+        contactNumber: formData.get('contactNumber').trim(),
+        email: formData.get('emailAddress').trim(),
+        
+        // Membership Info
+        civilStatus: formData.get('civilStatus'),
+        occupation: formData.get('occupation').trim(),
+        permanentAddress: formData.get('permanentAddress').trim(),
+        dateJoined: formData.get('dateJoined'),
+        
+        // HERE IS THE CHANGE: Use the generated code instead of "PENDING"
+        memberCode: generatedMemberCode, 
+        
+        // System Data
+        status: "Active",
+        createdAt: serverTimestamp()
+    };
+
+    try {
+        await addDoc(membersCollection, newMemberData);
+        
+        // Show success message with the new code
+        showAlert(`Member Added! Assigned Code: ${generatedMemberCode}`, "success");
+        
+        // Reset Form
+        form.reset();
+        document.getElementById('age').value = '';
+        document.getElementById('dateJoined').value = new Date().toISOString().split('T')[0];
+
+    } catch (error) {
+        console.error("Error adding document: ", error);
+        showAlert("Error saving to database: " + error.message, "error");
+    } finally {
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.disabled = false;
     }
-    pagination.innerHTML = buttons;
 }
 
-function goToPage(page) {
-    currentPage = page;
-    renderTable();
-}
-
+// ------------------------------------------------------------------
+// 5. HELPER FUNCTIONS
+// ------------------------------------------------------------------
 function calculateAge(dateString) {
     if(!dateString) return '';
     const today = new Date();
@@ -237,5 +163,5 @@ function showAlert(msg, type) {
 
     setTimeout(() => {
         alertBox.style.display = 'none';
-    }, 3000);
+    }, 5000);
 }

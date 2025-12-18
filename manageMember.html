@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Manage Members</title>
 
-  <!-- Styles -->
   <link rel="stylesheet" href="assets/css/managemember.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -15,9 +14,7 @@
 
 <div class="dashboard-wrapper">
 
-  <!-- ================= SIDEBAR ================= -->
   <aside class="sidebar">
-
     <nav class="nav">
       <div class="nav-section" style="margin-top:1rem">
         <div class="nav-section-title">Main</div>
@@ -34,41 +31,30 @@
       </div>
     </nav>
 
-   <!-- USER PROFILE -->
-<div class="user-profile" id="userProfile">
-  <div class="user-profile-content">
-    <img src="assets/img/about2.png" alt="TTMPC Logo" class="user-avatar">
+   <div class="user-profile" id="userProfile">
+      <div class="user-profile-content">
+        <img src="assets/img/about2.png" alt="TTMPC Logo" class="user-avatar">
+        <div class="user-text">
+          <div class="user-name">TTMPC Admin</div>
+          <div class="user-role">Administrator</div>
+        </div>
+        <i class="fas fa-chevron-down chevron"></i>
+      </div>
 
-    <div class="user-text">
-      <div class="user-name">TTMPC Admin</div>
-      <div class="user-role">Administrator</div>
+      <div class="profile-dropdown" id="dropdownMenu">
+        <button class="dropdown-link">
+          <i class="fas fa-cog"></i> Settings
+        </button>
+        <button class="dropdown-link logout">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
     </div>
-
-    <i class="fas fa-chevron-down chevron"></i>
-  </div>
-
-  <!-- DROPDOWN -->
-  <div class="profile-dropdown" id="dropdownMenu">
-    <button class="dropdown-link">
-      <i class="fas fa-cog"></i> Settings
-    </button>
-    <button class="dropdown-link logout">
-      <i class="fas fa-sign-out-alt"></i> Logout
-    </button>
-  </div>
-</div>
-
   </aside>
-  <!-- ================= END SIDEBAR ================= -->
 
-
-  <!-- ================= MAIN CONTENT ================= -->
   <main class="main-content">
 
-    <!-- ACTION BUTTONS -->
     <div class="action-buttons-section">
-     
-
       <a href="manageStaff.html" class="btn btn-manage-staff">
         <i class="fas fa-user-plus"></i> Manage Staff
       </a>
@@ -78,38 +64,29 @@
       </a>
     </div>
 
-    <!-- SEARCH -->
     <form class="search-section">
-      <input type="text" placeholder="Last Name Only" />
+      <input type="text" id="searchInput" placeholder="Search name or email..." />
 
-      <select>
-        <option>Annual Income</option>
-        <option>High Income</option>
-        <option>Low Income</option>
-      </select>
-
-      <select>
-        <option>Gender</option>
-        <option>Male</option>
-        <option>Female</option>
+      <select id="genderFilter">
+        <option value="">All Genders</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
       </select>
 
       <div class="search-buttons">
-        <button class="btn btn-search">
+        <button type="button" id="searchBtn" class="btn btn-search">
           <i class="fas fa-search"></i> Search
         </button>
-        <button type="reset" class="btn btn-clear">
+        <button type="reset" id="clearBtn" class="btn btn-clear">
           <i class="fas fa-times"></i> Clear
         </button>
       </div>
     </form>
 
-    <!-- TOTAL MEMBERS -->
     <div class="total-members-banner">
-      <i class="fas fa-users"></i> Total Members: <strong>3</strong>
+      <i class="fas fa-users"></i> Total Members: <strong id="totalMembers">Loading...</strong>
     </div>
 
-    <!-- TABLE -->
     <div class="table-wrapper">
       <table class="member-table">
         <thead>
@@ -118,52 +95,19 @@
             <th>Name</th>
             <th>Date Approved</th>
             <th>Gender</th>
-            <th>Annual Income</th>
-            <th>Actions</th>
+            <th>Email Address</th> <th>Actions</th>
           </tr>
         </thead>
 
-        <tbody>
-          <tr>
-            <td>M-001</td>
-            <td>Juan Dela Cruz</td>
-            <td>2024-01-15</td>
-            <td>Male</td>
-            <td>High Income</td>
-            <td>
-              <a href="edit.html" class="btn btn-edit" title="Edit">
-              <i class="fas fa-edit"></i>
-              </a>
-
-              <button class="btn btn-delete" title="Delete" onclick="// add your delete function here">
-              <i class="fas fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-
-          <tr>
-            <td>M-002</td>
-            <td>Maria Santos</td>
-            <td>2024-02-10</td>
-            <td>Female</td>
-            <td>Low Income</td>
-            <td>
-              <a href="edit.html" class="btn btn-edit" title="Edit">
-              <i class="fas fa-edit"></i>
-              </a>
-
-              <button class="btn btn-delete" title="Delete" onclick="// add your delete function here">
-              <i class="fas fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-          <script src="assets/js/managemenber.js"></script>
-        </tbody>
+        <tbody id="memberTableBody">
+           </tbody>
       </table>
     </div>
 
   </main>
-  </div>
-  </body>
-  </html>
-  <!-- ================= END MAIN CONTENT ================= -->
+</div>
+
+<script type="module" src="assets/js/managemenber.js"></script>
+
+</body>
+</html>

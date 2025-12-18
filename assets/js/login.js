@@ -67,7 +67,7 @@ window.login = async function() {
     }));
 
     showAlert("Login successful! Redirecting...", "success");
-    
+    ``
     setTimeout(() => {
       window.location.href = "dashboard.html";
     }, 1500);
