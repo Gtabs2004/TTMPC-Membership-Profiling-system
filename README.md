@@ -89,6 +89,19 @@ The main objective of this project is to develop a digital information system fo
 </li> 
 
 
+# System Development Life Cycle
+
+For the complete System Development Life Cycle (SDLC) documentation of the TTMPC Membership Profiling System, see [SDLC.md](SDLC.md).
+
+The SDLC follows an Agile development approach with seven phases:
+1. **Business Understanding** – Identifying TTMPC's operational needs and manual process inefficiencies
+2. **Data Selection** – Determining the relevant datasets for member profiling
+3. **Data Collection** – Gathering member data through online forms and existing records
+4. **Data Preparation** – Organizing and validating data for system processing
+5. **Modeling** – Designing the system architecture and database schema
+6. **Evaluation** – Testing performance, reliability, and usability
+7. **Deployment** – Launching the web-based platform with role-based access
+
 # How It Works
 
 <li> 
