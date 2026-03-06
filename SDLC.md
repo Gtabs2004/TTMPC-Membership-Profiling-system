@@ -2,7 +2,7 @@
 
 The System Development Life Cycle (SDLC) defines the stages involved in developing a system from conceptualization to deployment. The development of the TTMPC Membership Profiling System integrates the Agile development approach and data-driven optimization techniques to ensure that the system addresses the operational needs of the Tubungan Teachers Multi-Purpose Cooperative (TTMPC). The model consists of seven phases namely: business understanding, data selection, data collection, data preparation, modeling, evaluation, and deployment.
 
-**Figure X. System Development Life Cycle**
+**Figure 1. System Development Life Cycle**
 
 <!-- Replace with actual SDLC diagram -->
 <!-- Suggested: A flowchart showing the 7 phases connected in sequence with feedback loops -->
@@ -38,7 +38,7 @@ The System Development Life Cycle (SDLC) defines the stages involved in developi
 
 ## Phase 1: Business Understanding
 
-Figure X shows the System Development Life Cycle of the TTMPC Membership Profiling System. The researchers identified and analyzed the operational processes of the Tubungan Teachers Multi-Purpose Cooperative (TTMPC), particularly the administrative staff responsible for managing cooperative membership registration, profiling, and record-keeping. The primary users of the system include the Cooperative Administrator (Admin) and the Cooperative Members. Through observation and consultation with these stakeholders, the researchers gained a deeper understanding of the existing workflow for member registration, application review, profile management, and data retrieval. This phase allowed the researchers to identify inefficiencies in the manual profiling process — such as slow record retrieval, data redundancy, and error-prone paper-based registration — and determine the necessary functionalities of the proposed system.
+Figure 1 shows the System Development Life Cycle of the TTMPC Membership Profiling System. The researchers identified and analyzed the operational processes of the Tubungan Teachers Multi-Purpose Cooperative (TTMPC), particularly the administrative staff responsible for managing cooperative membership registration, profiling, and record-keeping. The primary users of the system include the Cooperative Administrator (Admin) and the Cooperative Members. Through observation and consultation with these stakeholders, the researchers gained a deeper understanding of the existing workflow for member registration, application review, profile management, and data retrieval. This phase allowed the researchers to identify inefficiencies in the manual profiling process — such as slow record retrieval, data redundancy, and error-prone paper-based registration — and determine the necessary functionalities of the proposed system.
 
 ## Phase 2: Data Selection
 
